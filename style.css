@@ -64,8 +64,8 @@ main{
 }
 
 .home-image{
-    width: 400px;
-    height: 300px;
+    width: 250px;
+    height: 200px;
     margin-right: 10px;
 }
 
@@ -77,6 +77,8 @@ main{
     border-radius: 30px;
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -87,8 +89,8 @@ main{
 }
 
 .about-image{
-    width: 475px;
-    height: 300px;
+    width: 300px;
+    height: 200px;
     margin-right: 10px;
     justify-content: center;
 }
@@ -104,6 +106,8 @@ main{
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -114,8 +118,8 @@ main{
 }
 
 .contact-image{
-    width: 475px;
-    height: 300px;
+    width: 300px;
+    height: 200px;
     margin-right: 10px;
     justify-content: center;
 }
