@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nexugent.com/sitemap.xml
