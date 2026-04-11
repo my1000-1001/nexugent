@@ -144,6 +144,186 @@ main{
     background: linear-gradient(90deg, rgba(255, 0, 0, 0.877) 0%, rgba(255, 39, 39, 0.473) 50%,  rgba(243, 80, 91, 0.473) 100%);
     border-radius: 30px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);/*Código de nuestra zona de trabajo*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body{
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgba(236, 235, 233) 100%);
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    object-fit: contain
+}
+
+header{
+    background: linear-gradient(90deg, rgb(101, 186, 191, 0.5) 0%, rgba(71, 104, 145, 0.719) 50%,  rgb(0, 47, 129) 100%);
+    color: #ffffff;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+header > div{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    object-fit: contain;
+    /* Propiedades de animación */
+    animation-name: rotacionContinua; /* Nombre que definimos arriba */
+    animation-duration: 4s;            /* Tiempo que tarda en dar una vuelta */
+    animation-iteration-count: infinite; /* Para que no se detenga nunca */
+    animation-timing-function: linear;  /* Para que el giro sea constante y fluido */
+}
+
+@keyframes rotacionContinua {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.menu-check {
+    display: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    font-size: 18px;
+    transition: all 0.3s ease; 
+    border-bottom: 2px solid transparent; /* Reservamos el espacio para el borde */
+}
+
+.nav-links a:hover {
+    color: #00bcd4; /* Cambia a un color azulado (ajústalo a tu marca) */
+    background-color: rgba(255, 255, 255, 0.1); /* Un fondo ligero opcional */
+    border-bottom: 2px solid #00bcd4; /* Aparece una línea debajo */
+}
+
+@media (max-width: 768px) {
+
+    header{
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: white;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #002f81;
+        text-align: center;
+    }
+
+    .menu-check:checked ~ nav .nav-links {
+        display: flex;
+    }
+}
+
+main{
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.hero{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('main.png') no-repeat center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    min-height: 80vh;
+    padding: 10px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h2 {
+    margin: 20px 40px 10px 40px; /* Margen: arriba, derecha, abajo, izquierda */
+    font-size: 2rem;
+    color: #dfdfdf;
+    /* Aplicamos la animación */
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+.hero p {
+    margin: 0 40px;
+    font-size: 1.1rem;
+    color: #dfdfdf;
+    /* Aplicamos la animación con un retraso */
+    animation: fadeIn 1.2s ease-out 0.5s forwards;
+    opacity: 0; /* Lo mantenemos oculto hasta que inicie la animación */
+}
+
+.hero a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ce1c1c;
+    color: #dfdfdf;
+    text-decoration: none;
+    border-radius: 5px;
+    /* Aplicamos la animación con un retraso mayor */
+    animation: fadeIn 1.2s ease-out 1s forwards;
+    opacity: 0; /* Lo mantenemos oculto hasta que inicie la animación */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#home{
+    background: linear-gradient(90deg, rgba(255, 0, 0, 0.877) 0%, rgba(255, 39, 39, 0.473) 50%,  rgba(243, 80, 91, 0.473) 100%);
+    border-radius: 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     margin-bottom: 30px;
@@ -237,14 +417,35 @@ main{
 }
 }
 
-.contact-link{
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #ce1c1c;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366; /* Verde de la segunda imagen */
+    border-radius: 50%;        /* Lo hace círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;          /* Corta lo que sobresalga del círculo */
+    transition: transform 0.3s ease;
+}
+
+/* La imagen dentro del círculo */
+.whatsapp-icon {
+    /* Como tu imagen es muy grande, aquí la reducimos */
+    width: 60%;  /* Esto hace que el icono blanco se vea centrado con margen verde */
+    height: 60%;
+    object-fit: contain; /* Evita que se deforme */
+    filter: brightness(1.5); /* Opcional: por si quieres que el blanco resalte más */
+}
+
+/* Efecto visual al pasar el mouse */
+.whatsapp-btn:hover {
+    transform: scale(1.1);
 }
 
 footer{
