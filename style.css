@@ -1,4 +1,4 @@
-/*Código de nuestra zona de trabajo*/
+*Código de nuestra zona de trabajo*/
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
@@ -7,7 +7,8 @@ body{
     color: #000000;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    padding: 0
+    padding: 0;
+    object-fit: contain
 }
 
 header{
@@ -30,6 +31,21 @@ header > div{
     width: 50px;
     height: 50px;
     margin-right: 10px;
+    object-fit: contain;
+    /* Propiedades de animación */
+    animation-name: rotacionContinua; /* Nombre que definimos arriba */
+    animation-duration: 4s;            /* Tiempo que tarda en dar una vuelta */
+    animation-iteration-count: infinite; /* Para que no se detenga nunca */
+    animation-timing-function: linear;  /* Para que el giro sea constante y fluido */
+}
+
+@keyframes rotacionContinua {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .menu-check {
@@ -49,6 +65,14 @@ header > div{
     padding: 15px 20px;
     display: block;
     font-size: 18px;
+    transition: all 0.3s ease; 
+    border-bottom: 2px solid transparent; /* Reservamos el espacio para el borde */
+}
+
+.nav-links a:hover {
+    color: #00bcd4; /* Cambia a un color azulado (ajústalo a tu marca) */
+    background-color: rgba(255, 255, 255, 0.1); /* Un fondo ligero opcional */
+    border-bottom: 2px solid #00bcd4; /* Aparece una línea debajo */
 }
 
 @media (max-width: 768px) {
