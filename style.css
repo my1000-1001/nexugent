@@ -320,3 +320,10 @@ footer{
     text-align: center;
     bottom: 0;
 }
+
+footer > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
