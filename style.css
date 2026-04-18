@@ -127,6 +127,7 @@ main{
     border: 1px solid rgba(255, 255, 255, 0.3);
     min-height: 80vh;
     padding: 10px 40px;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,7 +136,7 @@ main{
 
 .hero h2 {
     margin: 20px 40px 10px 40px; /* Margen: arriba, derecha, abajo, izquierda */
-    font-size: 2rem;
+    font-size: 5rem;
     color: #dfdfdf;
     /* Aplicamos la animación */
     animation: fadeIn 1.2s ease-out forwards;
@@ -143,7 +144,7 @@ main{
 
 .hero p {
     margin: 0 40px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     color: #dfdfdf;
     /* Aplicamos la animación con un retraso */
     animation: fadeIn 1.2s ease-out 0.5s forwards;
@@ -158,7 +159,6 @@ main{
     color: #dfdfdf;
     text-decoration: none;
     border-radius: 5px;
-    /* Aplicamos la animación con un retraso mayor */
     animation: fadeIn 1.2s ease-out 1s forwards;
     opacity: 0; /* Lo mantenemos oculto hasta que inicie la animación */
 }
@@ -171,6 +171,17 @@ main{
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 3rem;
     }
 }
 
