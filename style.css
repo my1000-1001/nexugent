@@ -1,4 +1,4 @@
-/*Código de nuestra zona de trabajo*/
+/*Código de trabajo*/
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
@@ -80,37 +80,101 @@ header > div{
 }
 
 @media (max-width: 768px) {
-
-    header{
+    header {
         justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    .hamburger {
+    /* Forzar que el contenedor del logo y el botón se queden en los extremos */
+    .logo-container {
         display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
+        align-items: center;
     }
 
-    .hamburger span {
+    /* Mostrar y dar estilo al botón hamburguesa en móviles */
+    .hamburger {
+        display: flex; /* Ahora sí se muestra en móvil */
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 101; /* Se posiciona por encima de todo */
+    }
+
+    .hamburger .line {
         display: block;
-        width: 25px;
+        width: 100%;
         height: 3px;
-        background-color: white;
+        background-color: white; /* Líneas blancas legibles */
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Animación de las líneas transformándose en X */
+    .hamburger.active .line:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .hamburger.active .line:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    .hamburger.active .line:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Menú de navegación móvil correctamente oculto en el inicio */
+    #nav-menu {
+        display: block; /* Sobrescribe cualquier comportamiento inline */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: #002f81;
+        padding-top: 90px; /* Evita que tape el logo al bajarse */
+        padding-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        
+        /* Estado inicial oculto mediante animaciones limpias */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-100%);
+        transition: all 0.4s cubic-bezier(0.1, 0.76, 0.55, 0.94);
+        z-index: 100;
+    }
+
+    /* Clase que activa JavaScript para deslizar el menú */
+    #nav-menu.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .nav-links {
-        display: none;
+        display: flex;
         flex-direction: column;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #002f81;
         text-align: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .nav-links li {
+        list-style: none;
     }
 
-    .menu-check:checked ~ nav .nav-links {
-        display: flex;
+    .nav-links a {
+        padding: 20px 0;
+        display: block;
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
 
@@ -288,7 +352,7 @@ main{
     right: 20px;
     width: 60px;
     height: 60px;
-    background-color: #25d366; /* Verde de la segunda imagen */
+    background-color: #4CFF79; /* Verde de la segunda imagen */
     border-radius: 50%;        /* Lo hace círculo */
     display: flex;
     justify-content: center;
