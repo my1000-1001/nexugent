@@ -363,11 +363,9 @@ main{
     transition: transform 0.3s ease;
 }
 
-/* La imagen dentro del círculo */
 .whatsapp-icon {
-    /* Como tu imagen es muy grande, aquí la reducimos */
-    width: 60%;  /* Esto hace que el icono blanco se vea centrado con margen verde */
-    height: 60%;
+    width: 90%;  /* Esto hace que el icono blanco se vea centrado con margen verde */
+    height: 100%;
     object-fit: contain; /* Evita que se deforme */
     filter: brightness(1.5); /* Opcional: por si quieres que el blanco resalte más */
 }
