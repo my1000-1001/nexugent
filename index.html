@@ -18,24 +18,25 @@
 </head>
 <body>
      <header>
-        <div>
-            <img src="logo.png" alt="Logo" class="logo">
-            <h1>Nexugent</h1>
-        </div>
-        <input type="checkbox" id="menu-toggle" class="menu-check">
-    <label for="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-    <nav>
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Nexugent</h1>
+    </div>
+    
+    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </button>
+    
+    <nav id="nav-menu">
         <ul class="nav-links">
             <li><a href="#home">Inicio</a></li>
             <li><a href="#about">Acerca de</a></li>
             <li><a href="#contact">Contacto</a></li>
         </ul>
     </nav>
-     </header>
+</header>
      <main class="hero">
             <section>
                 <h2>Impulsa tu negocio con tecnología de vanguardia</h2>
@@ -70,7 +71,7 @@
                 </section>
             </main>
             <a href="https://api.whatsapp.com/send?phone=51915336472&text=%22%C2%A1Hola%20Nexugent!%20%F0%9F%91%8B%20Vi%20su%20sitio%20web%20y%20me%20interesa%20recibir%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20desarrollo%20web.%20%C2%BFPodr%C3%ADan%20ayudarme%20con%20un%20presupuesto%3F%22" class="whatsapp-btn" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat con WhatsApp">
+                <img src="wa.png" alt="Chat con WhatsApp" class="whatsapp-icon">
                 </a>
             <footer>
                 <div>
@@ -88,5 +89,6 @@
                 </p>
                 </div>
             </footer>
+            <script src="script.js"></script>
         </body>
 </html>
