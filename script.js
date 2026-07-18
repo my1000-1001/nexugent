@@ -57,15 +57,24 @@ const slides = Array.from(document.querySelectorAll('.carousel-slide'));
 const buttons = Array.from(document.querySelectorAll('.menu-dot'));
 
 const updateCarousel = (targetIndex) => {
+    if (slides.length === 0) return;
+
     // 1. Mover el track para centrar el elemento seleccionado
-    // Calculamos basándonos en el ancho del slide + márgenes
-    const slideWidth = slides[0].getBoundingClientRect().width;
+    const firstSlide = slides[0];
     
-    // Ajuste dinámico para centrar perfectamente el slide activo
+    // CAMBIO CLAVE: offsetWidth lee el ancho de la caja sin importar el transform: scale() de CSS
+    const slideWidth = firstSlide.offsetWidth;
     const containerWidth = document.querySelector('.carousel-container').getBoundingClientRect().width;
-    const slideTotalWidth = slideWidth + (containerWidth * 0.1); // considerando el 5% de margen a cada lado
     
-    // Fórmula para compensar y dejar el elemento seleccionado en el centro exacto
+    // Extrae dinámicamente los márgenes calculados por el navegador en píxeles exactos
+    const computedStyles = window.getComputedStyle(firstSlide);
+    const marginLeft = parseFloat(computedStyles.marginLeft);
+    const marginRight = parseFloat(computedStyles.marginRight);
+    
+    // Suma real inmune a las alteraciones visuales de escala
+    const slideTotalWidth = slideWidth + marginLeft + marginRight;
+    
+    // Fórmula matemática para posicionar el eje central de forma perfecta
     const amountToMove = -(targetIndex * slideTotalWidth) + (containerWidth / 2) - (slideTotalWidth / 2);
     
     track.style.transform = `translateX(${amountToMove}px)`;
@@ -97,19 +106,23 @@ buttons.forEach((button) => {
     });
 });
 
-// Inicializar el carrusel en el primer elemento (Anti-SL)
+// Inicializar el carrusel en el primer elemento
 if(slides.length > 0) {
-    // Pequeño timeout para asegurar que el navegador renderizó las dimensiones correctas
     setTimeout(() => {
         updateCarousel(0);
-    }, 100);
+    }, 150); // Un leve incremento para asegurar la carga completa del CSS en móviles
 }
 
 // Recalcular posiciones si el usuario cambia el tamaño de la ventana
+let resizeTimeout;
 window.addEventListener('resize', () => {
-    const activeDot = document.querySelector('.menu-dot.active');
-    if (activeDot) {
-        const currentIndex = parseInt(activeDot.getAttribute('data-index'));
-        updateCarousel(currentIndex);
-    }
+    // CAMBIO CLAVE: Limpia el temporizador anterior para evitar cálculos erráticos intermedios
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        const activeDot = document.querySelector('.menu-dot.active');
+        if (activeDot) {
+            const currentIndex = parseInt(activeDot.getAttribute('data-index'));
+            updateCarousel(currentIndex);
+        }
+    }, 100); // Espera 100ms a que el CSS móvil termine de asentarse
 });
