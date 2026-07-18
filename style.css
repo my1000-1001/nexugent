@@ -281,8 +281,9 @@ main{
 
 /* Estilos de cada Slide */
 .carousel-slide {
+    flex: 0 0 60%; /* CORRECCIÓN: Bloquea el tamaño en flexbox para evitar deformaciones */
     min-width: 60%; /* Permite ver partes de los slides adyacentes */
-    margin: 0 5%;
+    margin: 0 5%; /* Mantenemos el diseño responsivo de tus márgenes */
     box-sizing: border-box;
     transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 0.4;
@@ -358,8 +359,10 @@ main{
 /* Ajustes Responsivos */
 @media (max-width: 768px) {
     .carousel-slide {
+        flex: 0 0 80%;
         min-width: 80%;
-        margin: 0 2%;
+        /* SOLUCIÓN: Cambiamos el 2% por un margen fijo de 10px a los lados */
+        margin: 0 10px; 
     }
     .portfolio-carousel h2 {
         font-size: 2rem;
