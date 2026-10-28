@@ -36,11 +36,10 @@ header > div{
     height: 50px;
     margin-right: 10px;
     object-fit: contain;
-    /* Propiedades de animación */
-    animation-name: rotacionContinua; /* Nombre que definimos arriba */
-    animation-duration: 4s;            /* Tiempo que tarda en dar una vuelta */
-    animation-iteration-count: infinite; /* Para que no se detenga nunca */
-    animation-timing-function: linear;  /* Para que el giro sea constante y fluido */
+    animation-name: rotacionContinua;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 @keyframes rotacionContinua {
@@ -70,13 +69,17 @@ header > div{
     display: block;
     font-size: 18px;
     transition: all 0.3s ease; 
-    border-bottom: 2px solid transparent; /* Reservamos el espacio para el borde */
+    border-bottom: 2px solid transparent;
 }
 
 .nav-links a:hover {
-    color: #00bcd4; /* Cambia a un color azulado (ajústalo a tu marca) */
-    background-color: rgba(255, 255, 255, 0.1); /* Un fondo ligero opcional */
-    border-bottom: 2px solid #00bcd4; /* Aparece una línea debajo */
+    color: #00bcd4;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid #00bcd4;
+}
+
+.hamburger {
+    display: none;
 }
 
 @media (max-width: 768px) {
@@ -87,15 +90,14 @@ header > div{
         box-sizing: border-box;
     }
 
-    /* Forzar que el contenedor del logo y el botón se queden en los extremos */
     .logo-container {
         display: flex;
         align-items: center;
     }
 
-    /* Mostrar y dar estilo al botón hamburguesa en móviles */
+    /* Botón hamburguesa en móviles */
     .hamburger {
-        display: flex; /* Ahora sí se muestra en móvil */
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 30px;
@@ -104,14 +106,14 @@ header > div{
         border: none;
         cursor: pointer;
         padding: 0;
-        z-index: 101; /* Se posiciona por encima de todo */
+        z-index: 101;
     }
 
     .hamburger .line {
         display: block;
         width: 100%;
         height: 3px;
-        background-color: white; /* Líneas blancas legibles */
+        background-color: white;
         border-radius: 3px;
         transition: all 0.3s ease-in-out;
     }
@@ -130,14 +132,14 @@ header > div{
 
     /* Menú de navegación móvil correctamente oculto en el inicio */
     #nav-menu {
-        display: block; /* Sobrescribe cualquier comportamiento inline */
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: auto;
         background-color: #002f81;
-        padding-top: 90px; /* Evita que tape el logo al bajarse */
+        padding-top: 90px;
         padding-bottom: 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         
@@ -178,53 +180,68 @@ header > div{
     }
 }
 
-main{
+main {
     padding: 20px;
     margin-top: 100px;
 }
 
-.hero{
+.hero {
+    position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('main.png') no-repeat center;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     min-height: 80vh;
-    padding: 10px 40px;
-    font-size: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hero section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #114091 0%, #003366 100%);
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 20px 80px 20px 40px; 
+    box-sizing: border-box;
 }
 
 .hero h2 {
-    margin: 20px 40px 10px 40px; /* Margen: arriba, derecha, abajo, izquierda */
-    font-size: 5rem;
+    margin: 0 0 15px 0;
+    width: 75%;
+    font-size: 3rem;
     color: #dfdfdf;
-    /* Aplicamos la animación */
     animation: fadeIn 1.2s ease-out forwards;
 }
 
 .hero p {
-    margin: 0 40px;
+    margin: 0 0 20px 0;
+    width: 75%;
     font-size: 1.5rem;
     color: #dfdfdf;
-    /* Aplicamos la animación con un retraso */
     animation: fadeIn 1.2s ease-out 0.5s forwards;
-    opacity: 0; /* Lo mantenemos oculto hasta que inicie la animación */
+    opacity: 0;
 }
 
 .hero a {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #ce1c1c;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #ce1c1c 0%, #831212 100%);
     color: #dfdfdf;
     text-decoration: none;
     border-radius: 5px;
     animation: fadeIn 1.2s ease-out 1s forwards;
-    opacity: 0; /* Lo mantenemos oculto hasta que inicie la animación */
+    opacity: 0;
 }
 
 @keyframes fadeIn {
@@ -239,13 +256,15 @@ main{
 }
 
 @media (max-width: 768px) {
-    #hero {
-        flex-direction: column;
-        text-align: center;
+    .hero section {
+        width: 100%;
+        clip-path: none;
+        background: linear-gradient(135deg, #11409100 0%, #003366 100%);
+        padding: 20px;
     }
 
     .hero h2 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 }
 
@@ -281,9 +300,9 @@ main{
 
 /* Estilos de cada Slide */
 .carousel-slide {
-    flex: 0 0 60%; /* CORRECCIÓN: Bloquea el tamaño en flexbox para evitar deformaciones */
-    min-width: 60%; /* Permite ver partes de los slides adyacentes */
-    margin: 0 5%; /* Mantenemos el diseño responsivo de tus márgenes */
+    flex: 0 0 60%;
+    min-width: 60%;
+    margin: 0 5%;
     box-sizing: border-box;
     transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 0.4;
@@ -361,7 +380,6 @@ main{
     .carousel-slide {
         flex: 0 0 80%;
         min-width: 80%;
-        /* SOLUCIÓN: Cambiamos el 2% por un margen fijo de 10px a los lados */
         margin: 0 10px; 
     }
     .portfolio-carousel h2 {
@@ -472,31 +490,30 @@ main{
     right: 20px;
     width: 60px;
     height: 60px;
-    background-color: #4CFF79; /* Verde de la segunda imagen */
-    border-radius: 50%;        /* Lo hace círculo */
+    background-color: #4CFF79;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    overflow: hidden;          /* Corta lo que sobresalga del círculo */
+    overflow: hidden;
     transition: transform 0.3s ease;
 }
 
 .whatsapp-icon {
-    width: 90%;  /* Esto hace que el icono blanco se vea centrado con margen verde */
+    width: 90%;
     height: 100%;
-    object-fit: contain; /* Evita que se deforme */
-    filter: brightness(1.5); /* Opcional: por si quieres que el blanco resalte más */
+    object-fit: contain;
+    filter: brightness(1.5);
 }
 
-/* Efecto visual al pasar el mouse */
 .whatsapp-btn:hover {
     transform: scale(1.1);
 }
 
 footer{
-    background-color: #114091;
+    background: linear-gradient(90deg, #114091 0%, #164681b7 50%,  #002f81 100%);
     color: #ffffff;
     padding: 20px;
     text-align: center;
